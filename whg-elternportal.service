@@ -1,0 +1,26 @@
+[Unit]
+Description=WHG Elternportal change check
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=whg-portal
+Group=whg-portal
+WorkingDirectory=/opt/whg-elternportal
+ExecStart=/usr/bin/node /opt/whg-elternportal/run-watch.mjs
+Environment=TZ=Europe/Berlin
+Environment=WHG_STATE_DIR=/var/lib/whg-elternportal
+Environment=WHG_DOWNLOAD_DIR=/var/lib/whg-elternportal/attachments
+LoadCredentialEncrypted=portal.json:/etc/credstore.encrypted/whg-portal.cred
+LoadCredentialEncrypted=dsb.json:/etc/credstore.encrypted/whg-dsb.cred
+LoadCredentialEncrypted=notify.json:/etc/credstore.encrypted/whg-notify.cred
+StateDirectory=whg-elternportal
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictSUIDSGID=true
+TimeoutStartSec=240

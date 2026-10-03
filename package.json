@@ -1,0 +1,16 @@
+{
+  "name": "elternportal-mcp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:portal": "node test-portal.mjs",
+    "test": "node --test mcp.test.mjs plans.test.mjs notify.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@philippdormann/elternportal-api": "2.11.0",
+    "cheerio": "1.0.0",
+    "nodemailer": "10.0.10",
+    "zod": "^3.25.76"
+  }
+}

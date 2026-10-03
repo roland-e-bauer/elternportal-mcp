@@ -1,0 +1,12 @@
+[Unit]
+Description=WHG morning and evening checks (Berlin time)
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 06:30:00 Europe/Berlin
+OnCalendar=*-*-* 18:00:00 Europe/Berlin
+Persistent=true
+RandomizedDelaySec=60
+Unit=whg-elternportal.service
+
+[Install]
+WantedBy=timers.target
